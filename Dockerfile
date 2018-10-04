@@ -29,8 +29,11 @@ RUN apt-get update && \
 	rm -rf /usr/share/man/?? && \
     rm -rf /usr/share/man/??_*
 
-ADD . /var/www
-
 EXPOSE 8888
+WORKDIR /var/www
 
-CMD php /var/www/src/index.php
+ONBUILD ADD ./ /var/www
+
+ONBUILD RUN composer install --no-dev
+
+ONBUILD CMD php /var/www/src/index.php
