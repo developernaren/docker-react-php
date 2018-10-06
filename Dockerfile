@@ -36,4 +36,4 @@ ONBUILD ADD ./ /var/www
 
 ONBUILD RUN composer install --no-dev
 
-ONBUILD CMD php /var/www/src/index.php
+ONBUILD CMD php src/index.php
